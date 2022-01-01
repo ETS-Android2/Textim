@@ -9,5 +9,5 @@ public class Constants {
     public static final String KEY_LOGGED_IN = "isLoggedIn";
     public static final String KEY_USER_ID = "userId";
     public static final String KEY_IMAGE = "profileImage";
-
+    public static final String KEY_FCM_TOKEN = "fcmToken";
 }
