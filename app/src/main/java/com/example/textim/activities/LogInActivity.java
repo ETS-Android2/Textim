@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.textim.R;
 import com.example.textim.databinding.ActivityLogInBinding;
 
 public class LogInActivity extends AppCompatActivity {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "315245390696",
+    "project_id": "textim-e3daa",
+    "storage_bucket": "textim-e3daa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315245390696:android:554dfde49694bc8dff04dd",
+        "android_client_info": {
+          "package_name": "com.example.textim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315245390696-8sre8uev4lu83qph9u31cpq6qfml1pb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSvWa2zg1dMQuikiiWezw3wNfsAraaew8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315245390696-8sre8uev4lu83qph9u31cpq6qfml1pb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
