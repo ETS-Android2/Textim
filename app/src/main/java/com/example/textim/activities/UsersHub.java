@@ -2,11 +2,13 @@ package com.example.textim.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.textim.adapters.UsersAdapter;
 import com.example.textim.databinding.ActivityUsersHubBinding;
+import com.example.textim.listeners.UserListener;
 import com.example.textim.models.User;
 import com.example.textim.utilities.Constants;
 import com.example.textim.utilities.PrefManager;
@@ -16,7 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersHub extends AppCompatActivity {
+public class UsersHub extends AppCompatActivity implements UserListener {
 
     private ActivityUsersHubBinding binding;
     private PrefManager prefManager;
@@ -58,7 +60,7 @@ public class UsersHub extends AppCompatActivity {
                             users.add(user);
                         }
                         if (users.size() > 0) {
-                            UsersAdapter usersAdapter = new UsersAdapter(users);
+                            UsersAdapter usersAdapter = new UsersAdapter(users, this);
                             binding.usersRecView.setAdapter(usersAdapter);
                             binding.usersRecView.setVisibility(View.VISIBLE);
                         } else {
@@ -83,4 +85,11 @@ public class UsersHub extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onUserClicked(User user) {
+        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+        intent.putExtra(Constants.KEY_USER, user);
+        startActivity(intent);
+        finish();
+    }
 }
