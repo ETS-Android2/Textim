@@ -1,8 +1,10 @@
-package com.example.textim;
+package com.example.textim.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.textim.R;
 
 public class MainActivity extends AppCompatActivity {
 
