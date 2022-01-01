@@ -70,7 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 .add(user)
                 .addOnSuccessListener(documentReference -> {
                     loading(false);
-                    prefManager.putBoolean(Constants.KED_LOGGED_IN,true);
+                    prefManager.putBoolean(Constants.KEY_LOGGED_IN,true);
                     prefManager.putString(Constants.KEY_USER_ID, documentReference.getId());
                     prefManager.putString(Constants.KEY_NAME, binding.username.getText().toString());
                     prefManager.putString(Constants.KEY_IMAGE, encodedImage);
