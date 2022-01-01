@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         prefManager = new PrefManager(getApplicationContext());
-        setContentView(binding.getRoot());
         fetchUserData();
         getToken();
         setListeners();
@@ -38,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setListeners() {
         binding.logout.setOnClickListener(v->logOut());
+
+        binding.newChat.setOnClickListener(v->
+                startActivity(new Intent(getApplicationContext(), UsersHub.class)));
     }
 
     private void fetchUserData() {
@@ -64,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 );
 
         docRef.update(Constants.KEY_FCM_TOKEN,token)
-                .addOnSuccessListener(unused -> showToast("Updated token"))
                 .addOnFailureListener(e -> showToast("Error Updating Token"));
     }
 
