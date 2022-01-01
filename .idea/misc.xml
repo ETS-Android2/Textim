@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/layout/activity_log_in.xml" value="0.18034447821681865" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/drawable/background_image.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/drawable/gradient_button.xml" value="0.2490740740740741" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/drawable/input_background.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/layout/activity_log_in.xml" value="0.33" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/layout/activity_main.xml" value="0.18034447821681865" />
+        <entry key="..\:/Users/Mhmad/AndroidStudioProjects/Textim/app/src/main/res/layout/activity_registration.xml" value="0.33" />
       </map>
     </option>
   </component>
