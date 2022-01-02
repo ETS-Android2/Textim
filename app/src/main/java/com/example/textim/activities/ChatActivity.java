@@ -14,7 +14,10 @@ import com.example.textim.models.ChatMsg;
 import com.example.textim.models.User;
 import com.example.textim.utilities.Constants;
 import com.example.textim.utilities.PrefManager;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -35,6 +38,7 @@ public class ChatActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private PrefManager prefManager;
     private FirebaseFirestore db;
+    private String convoId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,20 @@ public class ChatActivity extends AppCompatActivity {
         message.put(Constants.KEY_MESSAGE, binding.message.getText().toString());
         message.put(Constants.KEY_TIMESTAMP, new Date());
         db.collection(Constants.KEY_COLLECTION_CHAT).add(message);
+        if (convoId != null) {
+            updateRecentConvo(binding.message.getText().toString());
+        } else {
+            HashMap<String, Object> convo = new HashMap<>();
+            convo.put(Constants.KEY_SENDER_ID, prefManager.getString(Constants.KEY_USER_ID));
+            convo.put(Constants.KEY_SENDER_NAME, prefManager.getString(Constants.KEY_NAME));
+            convo.put(Constants.KEY_SENDER_IMG, prefManager.getString(Constants.KEY_IMAGE));
+            convo.put(Constants.KEY_RECEIVER_ID, receivingUser.id);
+            convo.put(Constants.KEY_RECEIVER_NAME, receivingUser.name);
+            convo.put(Constants.KEY_RECEIVER_IMG, receivingUser.image);
+            convo.put(Constants.KEY_LAST_MESSAGE, binding.message.getText().toString());
+            convo.put(Constants.KEY_TIMESTAMP, new Date());
+            addRecentConvo(convo);
+        }
         binding.message.setText(null);
     }
 
@@ -107,6 +125,9 @@ public class ChatActivity extends AppCompatActivity {
             binding.chatRecView.setVisibility(View.VISIBLE);
         }
         binding.progBar.setVisibility(View.GONE);
+        if (convoId == null){
+            checkForRecentConvos();
+        }
     };
 
     private void loadReceiverData(){
@@ -124,8 +145,51 @@ public class ChatActivity extends AppCompatActivity {
         binding.sendFrame.setOnClickListener(v -> sendMsg());
     }
 
+    private void addRecentConvo(HashMap<String, Object> convo) {
+        db.collection(Constants.KEY_COLLECTION_RECENTS)
+                .add(convo)
+                .addOnSuccessListener(documentReference -> convoId = documentReference.getId());
+    }
+
+    private void updateRecentConvo(String msg) {
+        DocumentReference documentReference =
+                db.collection(Constants.KEY_COLLECTION_RECENTS).document(convoId);
+        documentReference.update(
+                Constants.KEY_LAST_MESSAGE, msg,
+                Constants.KEY_TIMESTAMP, new Date()
+        );
+    }
+
     private String getReadableDateTime(Date date) {
         return  new SimpleDateFormat("MMMM dd, yyyy - hh-mm a", Locale.getDefault()).format(date);
     }
+
+    private void checkForRecentConvos(){
+        if (chatMsgs.size() != 0) {
+            checkForRecentConvosRemote(
+                    prefManager.getString(Constants.KEY_USER_ID),
+                    receivingUser.id
+            );
+            checkForRecentConvosRemote(
+                    receivingUser.id,
+                    prefManager.getString(Constants.KEY_USER_ID)
+            );
+        }
+    }
+
+    private void checkForRecentConvosRemote(String senderId, String receiverId) {
+        db.collection(Constants.KEY_COLLECTION_RECENTS)
+                .whereEqualTo(Constants.KEY_SENDER_ID, senderId)
+                .whereEqualTo(Constants.KEY_RECEIVER_ID, receiverId)
+                .get()
+                .addOnCompleteListener(convOnCompleteListener);
+    }
+
+    private final OnCompleteListener<QuerySnapshot> convOnCompleteListener = task -> {
+        if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
+            DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+            convoId = documentSnapshot.getId();
+        }
+    };
 
 }
