@@ -14,6 +14,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/background_icon"
         android:src="@drawable/ic_prev"
         android:tint="@color/white"
@@ -24,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select a user"
+        android:text="@string/select_a_user"
         android:textColor="@color/white"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"

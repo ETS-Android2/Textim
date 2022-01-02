@@ -29,6 +29,7 @@
         android:id="@+id/prevIcon"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:padding="@dimen/_8sdp"
         android:src="@drawable/ic_prev"
         app:tint="@color/white"
@@ -57,6 +58,7 @@
         android:id="@+id/viewSupport"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@color/primary"
         android:layout_marginTop="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@id/prevIcon"
         />
@@ -65,7 +67,8 @@
         android:id="@+id/chatRecView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="@dimen/_20sdp"
+        android:padding="@dimen/_10sdp"
+        app:stackFromEnd="true"
         android:orientation="vertical"
         android:clipToPadding="false"
         android:overScrollMode="never"
@@ -89,11 +92,32 @@
         android:id="@+id/infoIcon"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:padding="@dimen/_8sdp"
         android:src="@drawable/ic_info"
         app:tint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/chat_inputs_background"
+        android:hint="@string/write_a_message"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingStart="@dimen/_25sdp"
+        android:paddingEnd="@dimen/_25sdp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/secondary_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sendFrame"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
         android:id="@+id/sendFrame"
@@ -116,25 +140,5 @@
             android:padding="@dimen/_8sdp" />
 
     </FrameLayout>
-
-    <EditText
-        android:id="@+id/message"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:hint="@string/write_a_message"
-        android:imeOptions="actionDone"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingEnd="@dimen/_25sdp"
-        android:background="@drawable/chat_inputs_background"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHint="@color/secondary_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sendFrame"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
