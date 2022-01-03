@@ -135,7 +135,7 @@ public class MainActivity extends BaseActivity implements ConvosListener {
                 }
             }
 
-            Collections.sort(convos, (obj1,obj2) -> obj1.dateObject.compareTo(obj2.dateObject));
+            Collections.sort(convos, (obj1,obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
 
             convosAdapter.notifyDataSetChanged();
             binding.recentsRecView.smoothScrollToPosition(0);
