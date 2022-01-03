@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/recentMessage"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_12sdp"
@@ -49,8 +49,23 @@
         android:maxLines="1"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/recentMessage"
         app:layout_constraintStart_toEndOf="@id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/viewSupport" />
+
+    <TextView
+        android:id="@+id/recentMessageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/_11sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewSupport" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

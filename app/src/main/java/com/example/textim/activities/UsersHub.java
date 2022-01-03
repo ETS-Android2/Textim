@@ -1,6 +1,5 @@
 package com.example.textim.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersHub extends AppCompatActivity implements UserListener {
+public class UsersHub extends BaseActivity implements UserListener {
 
     private ActivityUsersHubBinding binding;
     private PrefManager prefManager;

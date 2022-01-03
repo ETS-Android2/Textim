@@ -13,7 +13,9 @@ import com.example.textim.databinding.RecentCoversationsContainerBinding;
 import com.example.textim.listeners.ConvosListener;
 import com.example.textim.models.ChatMsg;
 import com.example.textim.models.User;
+import com.google.firebase.installations.Utils;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class RecentConvAdpt extends RecyclerView.Adapter<RecentConvAdpt.ConversationViewHolder> {
@@ -58,9 +60,12 @@ public class RecentConvAdpt extends RecyclerView.Adapter<RecentConvAdpt.Conversa
         }
 
         void setData(ChatMsg chatMsg) {
+            SimpleDateFormat localDateFormat =  new SimpleDateFormat("hh.mm aa");
+            String time = localDateFormat.format(chatMsg.dateObject);
             binding.username.setText(chatMsg.convoName);
             binding.recentMessage.setText(chatMsg.message);
             binding.profileImage.setImageBitmap(getConvoImg(chatMsg.convoImg));
+            binding.recentMessageTime.setText(time);
             binding.getRoot().setOnClickListener(v -> {
                 User user = new User();
                 user.id = chatMsg.convoID;

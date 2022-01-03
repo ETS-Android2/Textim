@@ -30,6 +30,7 @@
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:padding="@dimen/_8sdp"
         android:src="@drawable/ic_prev"
         app:tint="@color/white"
@@ -52,6 +53,25 @@
         app:layout_constraintEnd_toStartOf="@id/infoIcon"
         app:layout_constraintStart_toEndOf="@id/prevIcon"
         app:layout_constraintTop_toTopOf="@id/prevIcon"
+        />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/online"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@id/prevIcon"
+        app:layout_constraintEnd_toStartOf="@id/infoIcon"
+        app:layout_constraintStart_toEndOf="@id/prevIcon"
+        app:layout_constraintTop_toBottomOf="@+id/username"
         />
 
     <View
@@ -93,6 +113,7 @@
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:padding="@dimen/_8sdp"
         android:src="@drawable/ic_info"
         app:tint="@color/white"

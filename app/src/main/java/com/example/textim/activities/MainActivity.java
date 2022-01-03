@@ -1,6 +1,5 @@
 package com.example.textim.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -30,7 +29,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ConvosListener {
+public class MainActivity extends BaseActivity implements ConvosListener {
 
     private ActivityMainBinding binding;
     private PrefManager prefManager;
