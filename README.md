@@ -1,6 +1,6 @@
 # Textim
 Android Chatting Application
-![demo](preview.jpg)
+![demo](preview.jpeg)
 
 # Preview
 ![demo](maingif.gif)
