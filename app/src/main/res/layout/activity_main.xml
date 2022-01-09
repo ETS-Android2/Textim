@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:background="@drawable/background_icon"
+        android:background="@drawable/background_image"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -62,9 +62,9 @@ public class RegistrationActivity extends AppCompatActivity {
         loading(true);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         HashMap<String, Object> user = new HashMap<>();
-        user.put(Constants.KEY_NAME, binding.username.getText().toString());
-        user.put(Constants.KEY_EMAIL, binding.email.getText().toString());
-        user.put(Constants.KEY_PASS, binding.password.getText().toString());
+        user.put(Constants.KEY_NAME, binding.username.getEditText().getText().toString());
+        user.put(Constants.KEY_EMAIL, binding.email.getEditText().getText().toString());
+        user.put(Constants.KEY_PASS, binding.password.getEditText().getText().toString());
         user.put(Constants.KEY_IMAGE, encodedImage);
         db.collection(Constants.KEY_COLLECTION_USERS)
                 .add(user)
@@ -72,7 +72,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     loading(false);
                     prefManager.putBoolean(Constants.KEY_LOGGED_IN,true);
                     prefManager.putString(Constants.KEY_USER_ID, documentReference.getId());
-                    prefManager.putString(Constants.KEY_NAME, binding.username.getText().toString());
+                    prefManager.putString(Constants.KEY_NAME, binding.username.getEditText().getText().toString());
                     prefManager.putString(Constants.KEY_IMAGE, encodedImage);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -120,22 +120,22 @@ public class RegistrationActivity extends AppCompatActivity {
         if (encodedImage == null) {
             showToast("Upload A Profile Image");
             return false;
-        } else if (binding.username.getText().toString().trim().isEmpty()) {
+        } else if (binding.username.getEditText().getText().toString().trim().isEmpty()) {
             showToast("Type a username");
             return false;
-        } else if (binding.email.getText().toString().trim().isEmpty()) {
+        } else if (binding.email.getEditText().getText().toString().trim().isEmpty()) {
             showToast("Type your email address");
             return false;
-        } else if(!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()) {
+        } else if(!Patterns.EMAIL_ADDRESS.matcher(binding.email.getEditText().getText().toString()).matches()) {
             showToast("Type a valid email address");
             return false;
-        } else if (binding.password.getText().toString().trim().isEmpty()) {
+        } else if (binding.password.getEditText().getText().toString().trim().isEmpty()) {
             showToast("Type a password");
             return false;
-        } else if (binding.verifyPass.getText().toString().trim().isEmpty()) {
+        } else if (binding.verifyPass.getEditText().getText().toString().trim().isEmpty()) {
             showToast("Confirm your password");
             return false;
-        } else if (!binding.password.getText().toString().equals(binding.verifyPass.getText().toString())){
+        } else if (!binding.password.getEditText().getText().toString().equals(binding.verifyPass.getEditText().getText().toString())){
             showToast("Password doesn't match");
             return false;
         } else return true;
